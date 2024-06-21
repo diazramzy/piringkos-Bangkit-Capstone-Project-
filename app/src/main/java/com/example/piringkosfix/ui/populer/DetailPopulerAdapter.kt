@@ -1,0 +1,40 @@
+package com.example.piringkosfix
+
+import android.content.Context
+import android.content.Intent
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.piringkosfix.databinding.RvPopuleractivityBinding
+import com.example.piringkosfix.data.Recipe
+
+class DetailPopulerAdapter (var dataList:ArrayList<Recipe>, var context: Context):RecyclerView.Adapter<DetailPopulerAdapter.ViewHolder>() {
+    inner class ViewHolder(var binding :RvPopuleractivityBinding):RecyclerView.ViewHolder(binding.root)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        var binding =RvPopuleractivityBinding.inflate(LayoutInflater.from(context),parent,false)
+        return ViewHolder(binding)
+    }
+
+    override fun getItemCount(): Int {
+        return dataList.size
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        Glide.with(context).load(dataList.get(position).img).into(holder.binding.img)
+        holder.binding.tittle.text=dataList.get(position).tittle
+        var temp=dataList.get(position).ing.split("\n").dropLastWhile { it.isEmpty() }.toTypedArray()
+        holder.binding.time.text=temp[0]
+        holder.binding.next.setOnClickListener{
+            var intent= Intent(context, ResepActivity::class.java)
+            intent.putExtra("img", dataList.get(position).img)
+            intent.putExtra("tittle", dataList.get(position).tittle)
+            intent.putExtra("des", dataList.get(position).des)
+            intent.putExtra("ing", dataList.get(position).ing)
+            intent.putExtra("id", dataList[position].uid)
+            intent.flags=Intent.FLAG_ACTIVITY_NEW_TASK
+            context.startActivity(intent)
+        }
+    }
+}

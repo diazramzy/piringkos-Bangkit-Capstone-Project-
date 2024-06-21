@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "934111843173",
+    "project_id": "piring-kos-fix",
+    "storage_bucket": "piring-kos-fix.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934111843173:android:6f3b78b2b599e31402c78c",
+        "android_client_info": {
+          "package_name": "com.example.piringkosfix"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkOTBUtDBJguXDgf1iOTLyqvysxrsK9ao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
